@@ -6,4 +6,4 @@ def test_add():
 
 def test_subtract():
     """Tests the substraction functiion."""
-    assert subtract(5,3) == 10
+    assert subtract(5,3) == 2
