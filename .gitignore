@@ -20,3 +20,5 @@ htmlcov/
 
 # Test directories
 .pytest_cache/
+
+tests/__pycache__
