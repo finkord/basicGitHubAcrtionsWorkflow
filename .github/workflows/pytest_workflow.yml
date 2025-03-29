@@ -62,6 +62,10 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+
+          git fetch --all
+          git checkout ${{ github.head_ref }}
+
           git add README.md
           git commit -m "Added badge to README"
-          git push origin develop
+          git push
