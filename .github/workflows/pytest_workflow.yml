@@ -58,7 +58,7 @@ jobs:
         if: env.update_needed == 'true'
         run: |
 
-          echo "## Badge\n ![Run Tests and Collect Coverage and make Badge](https://github.com/${{ github.repository }}/actions/workflows/pytest_workflow.yml/badge.svg) \n" | cat - README.md > temp && mv temp README.md
+          echo -e "## Badge\n ![Run Tests and Collect Coverage and make Badge](https://github.com/${{ github.repository }}/actions/workflows/pytest_workflow.yml/badge.svg) \n" | cat - README.md > temp && mv temp README.md
 
       - name: commit and push changes
         if: env.update_needed == 'true'
