@@ -40,12 +40,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check if badge alredy in place
         id: check_badge
         run: |
-          if grep -q "![Build Status](https://github.com/${{ github.repository }}/actions/workflows/pytest_workflow.yml/badge.svg)" README.md; then
+          if grep -q "<!-- BUILD-STATUS-BADGE -->" README.md; then
             echo "Badge alredy exists."
             echo "update_needed=false" >> $GITHUB_ENV
           else
@@ -55,7 +56,7 @@ jobs:
       - name: Add badge if needed
         if: env.update_needed == 'true'
         run: |
-          echo "![Build Status](https://github.com/${{ github.repository }}/actions/workflows/pytest_workflow.yml/badge.svg)" | cat - README.md > temp && mv temp README.md
+          echo "<!-- BUILD-STATUS-BADGE -->![Build Status](https://github.com/${{ github.repository }}/actions/workflows/pytest_workflow.yml/badge.svg)" | cat - README.md > temp && mv temp README.md
 
       - name: commit and push changes
         if: env.update_needed == 'true'
