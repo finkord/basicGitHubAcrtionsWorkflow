@@ -56,7 +56,8 @@ jobs:
       - name: Add badge if needed
         if: env.update_needed == 'true'
         run: |
-          echo "<!-- BUILD-STATUS-BADGE --> ![Build Status](https://github.com/${{ github.repository }}/actions/workflows/pytest_workflow.yml/badge.svg)" | cat - README.md > temp && mv temp README.md
+          echo "<!-- BUILD-STATUS-BADGE --> 
+          ![Build Status](https://github.com/${{ github.repository }}/actions/workflows/pytest_workflow.yml/badge.svg)" | cat - README.md > temp && mv temp README.md
 
       - name: commit and push changes
         if: env.update_needed == 'true'
